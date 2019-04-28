@@ -16,32 +16,42 @@ Password should be stored securely on the server side.
 
 *Design*
 
-i.   Use Spring Boot to provide the structure for Restful endpoint, and Spring Security for authentication.
+i.    Use Spring Boot to provide the structure for Restful endpoint, and Spring Security for authentication.
 
-ii.  Use a command line loader (Spring Boot functionality) to "pre-populate" a (the same), single username and password everytime the application starts.
+ii.   Use a command line loader (Spring Boot functionality) to "pre-populate" a (the same), single username and password everytime the application starts.
 
-iii. The single username, password can be used by all users (name) of the application.
+iii.  The single username, password can be used by all users (name) of the application.
 
-iv.  Create a Name, and Detail POJO for holding the name, and the username / password detail.
+iv.   Create a Name, and Detail POJO for holding the name, and the username / password detail.
 
-v.   Use Spring Boot Security Application Security manager to check the username, and password.
+v.    Use Spring Boot Security Application Security manager to check the username, and password.
 
-vi.  If valid, create a Spring Boot (userservice), authenticated User, with a USER role, and forward to the Controller (name endpoint).
+vi.   If valid, create a Spring Boot (userservice), authenticated User, with a USER role, and forward to the Controller (name endpoint).
 
-vii. There is no need to store the persons name, as we are only outputting in Hello message.
+vii.  There is no need to store the persons name, as we are only outputting in Hello message.
+
+viii. Password is stored securely using bcrypt hash.
 
 ---
 *Development*
 
 
-*Note - during development it was necessary to Use updated Spring security 5 BCryptPasswordEncoder to avoid the following error:*
+i.  *Note - during development it was necessary to Use updated Spring security 5 BCryptPasswordEncoder to avoid the following error:*
 ```
 java.lang.IllegalArgumentException: There is no PasswordEncoder mapped for the id "null"
 
 Documented in(https://docs.spring.io/spring-security/site/docs/5.0.0.RELEASE/reference/htmlsingle/#troubleshooting)
 ```
 
+ii.  The password is stored securely on the server side, implemented in the com.chocksaway.load.Loader class, using BCryptPasswordEncoder().encode(......);
 
+This is used by the Spring Security WebSecurityConfigurer, UserDetailsService bean.  
+Debug is pasted, confirming the bcrypt password:
+```
+detail = {Detail@6098} 
+ name = "username"
+ password = "$2a$10$6LEbRP5vhXxMWTx/bixufu./TU944nE8UT9tnhiMm/I2uc4ruVz3W"
+```
 ---
 Build, and create FAT jar using maven.
 
