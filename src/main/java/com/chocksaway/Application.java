@@ -10,7 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
  */
 @SpringBootApplication
 
-class Application {
+public class Application {
 
     /*
      * Needed to avoid java.lang.IllegalArgumentException: There is no PasswordEncoder mapped for the id "null"

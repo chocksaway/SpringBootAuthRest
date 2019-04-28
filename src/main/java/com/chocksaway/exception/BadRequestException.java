@@ -1,14 +1,11 @@
 package com.chocksaway.exception;
 
 /**
- * Exception handler for handling client side Bad requests.
- * 
- * @author satish
- *
+ * Author milesd on 27/04/2019.
  */
 public class BadRequestException extends RuntimeException {
 
-	private static final long serialVersionUID = 1791564636123821405L;
+	private static final long serialVersionUID = 1791224631238215443L;
 
 	public BadRequestException(String message) {
 		super(message);

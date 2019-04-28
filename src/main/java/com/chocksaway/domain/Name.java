@@ -21,6 +21,9 @@ public class Name {
     }
 
     @Override
+    /**
+     * Used for JSon return message from endpoint
+     */
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("{");

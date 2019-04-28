@@ -46,14 +46,4 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
 	}
-
-//	@Autowired
-//	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//
-//
-//
-//		auth.inMemoryAuthentication().withUser()
-//				// .password("{noop}password")
-//				.password(bCryptPasswordEncoder.encode("secret")).roles("USER");
-//	}
 }

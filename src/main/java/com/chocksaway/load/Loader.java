@@ -22,7 +22,7 @@ public class Loader implements CommandLineRunner {
     @Override
     public void run(String... strings) throws Exception {
         logger.info("Loading details data...");
-
         detailsManager.saveDetail(new Detail("username", new BCryptPasswordEncoder().encode("password")));
+        logger.info("Finished loading details data...");
     }
 }
